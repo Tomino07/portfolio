@@ -1,5 +1,5 @@
 :root {
-  --bg: #90D5FF;
+  --bg: #E5EDF1;
   --text: #0b1a30;
   --muted: #1d3a63;
   --line: rgba(11, 26, 48, .25);
@@ -62,7 +62,7 @@ strong { color: var(--text); font-weight: 700; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(42, 95, 158, .96);
+  background: rgba(17, 20, 57, .96);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(11, 26, 48, .35);
