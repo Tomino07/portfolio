@@ -1,5 +1,5 @@
 :root {
-  --bg: #E5EDF1;
+  --bg: #CCD8DF;
   --text: #0b1a30;
   --muted: #1d3a63;
   --line: rgba(11, 26, 48, .25);
@@ -220,7 +220,7 @@ button[type="submit"]:hover { background: #1d4a8a; }
 .form-status { font-size: 16px; color: var(--navy); font-weight: 600; margin-top: 14px; }
 
 .site-footer {
-  background: var(--deep);
+  background: #111439;
   font-size: 15px;
   color: var(--deep-text);
 }
