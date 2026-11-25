@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veilles technologiques — Tom Marliot-Montagne</title>
+  <meta name="description" content="Portfolio de Tom Marliot-Montagne, étudiant en BTS SIO option SISR.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&family=Ubuntu+Mono:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Tom Marliot-Montagne</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">menu</button>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets PPE</a></li>
+        <li><a href="stages.html">Stages &amp; Expériences</a></li>
+        <li><a href="veille.html" aria-current="page">Veilles technologiques</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+<p class="path">~/veille</p>
+    <h1>Veilles technologiques</h1>
+
+    <p>La veille technologique consiste à suivre régulièrement l'évolution de son domaine afin de conserver des connaissances à jour et de mieux comprendre les risques ou les changements susceptibles d'avoir un impact sur son activité.</p>
+
+    <h2>Ma méthode de veille</h2>
+    <p>Je consacre chaque mois un temps à la consultation des publications liées à l'informatique. Je sélectionne les informations qui présentent un intérêt direct avec la sécurité dans les infrastructures informatiques (mon thème de veille), puis je vérifie leur fiabilité (date, site) en les comparant avec d'autres sources. Je rédige ensuite une synthèse, en indiquant la source et la date.</p>
+
+    <h2>Mes sources</h2>
+    <p>Je privilégie les sources connues, tout en essayant de prendre des informations venant de plusieurs sites différents.</p>
+
+    <h2>Veille du mois de Novembre</h2>
+    <h3>GitLab : des certificats compromis imposent la mise à jour des serveurs et des outils CI/CD</h3>
+    <p class="meta"><strong>Date : 1 novembre 2026</strong><br><strong>Lien :</strong> <a href="https://armees.com/gitlab-emudhra-certificats-compromis-runner-ai-gateway-cert-fr-011126-0936/" target="_blank" rel="noopener" style="word-break:break-all">https://armees.com/gitlab-emudhra-certificats-compromis-runner-ai-gateway-cert-fr-011126-0936/</a></p>
+    <p>Le 29 octobre 2026, GitLab a publié des mises à jour de sécurité pour retirer sa confiance à huit certificats intermédiaires de l'autorité de certification eMudhra, dont les clés privées ont été compromises. Le CERT-FR de l'ANSSI a relayé l'alerte le 30 octobre (CERTFR-2026-AVI-1427) ; le risque identifié est un contournement de la politique de sécurité, référencé CVE-2026-111943.</p>
+    <p>Selon les éléments rapportés, ces clés privées pouvaient être retrouvées à partir des certificats eux-mêmes, à cause d'une génération défectueuse. Un attaquant pourrait donc s'en servir pour usurper l'identité d'un service lors d'une connexion chiffrée. Les navigateurs ont déjà bloqué ces certificats, mais certains outils utilisent leur propre liste de certificats de confiance : mettre à jour le navigateur ou le système d'exploitation ne suffit donc pas forcément.</p>
+    <p>Pour les installations auto-hébergées, il faut mettre à jour le serveur GitLab (versions corrigées 19.5.3, 19.4.5, 19.3.7, etc. selon la branche), mais aussi vérifier séparément GitLab Runner, qui doit passer en version 19.5.1, et AI Gateway. La mise à jour du serveur ne met pas à jour automatiquement les agents qui exécutent les tâches d'intégration et de déploiement continus (CI/CD), et les images utilisées par ces tâches peuvent devoir être reconstruites.</p>
+
+    <h2>Veille du mois d'Octobre</h2>
+    <h3>Une faille critique dans le firmware UEFI menace la plupart des serveurs</h3>
+    <p class="meta"><strong>Date : 27 octobre 2026</strong><br><strong>Lien :</strong> <a href="https://www.wired.com/story/most-servers-on-the-planet-are-vulnerable-to-a-code-execution-flaw-in-uefi-firmware/" target="_blank" rel="noopener" style="word-break:break-all">https://www.wired.com/story/most-servers-on-the-planet-are-vulnerable-to-a-code-execution-flaw-in-uefi-firmware/</a></p>
+    <p>Des chercheurs ont découvert une vulnérabilité critique, référencée CVE-2026-97631 et notée 9,5 sur 10, dans EDK II, le code open source de TianoCore qui sert de base au firmware UEFI de la plupart des serveurs. Le défaut, présent depuis environ seize ans, se situe dans le pilote de démarrage réseau (PXE).</p>
+    <p>Selon les éléments rapportés, un attaquant présent sur le réseau local peut envoyer un message d'erreur ICMP trop long à une machine pendant son démarrage PXE. Ce débordement de mémoire lui permet d'exécuter du code avant le chargement du système d'exploitation, donc avant que des protections comme Secure Boot n'entrent en jeu. Aucune authentification n'est nécessaire.</p>
+    <p>La faille concerne presque tous les fournisseurs de firmware UEFI, comme AMI, Insyde ou Phoenix, ainsi que Project Mu de Microsoft. Sa divulgation coordonnée était prévue pour janvier, mais un correctif publié en avance sur GitHub a rendu ses détails publics plus tôt que prévu.</p>
+    <p>Pour les organisations, cette situation montre que la sécurité d'une infrastructure ne s'arrête pas au système d'exploitation : le firmware des serveurs doit lui aussi être inventorié et mis à jour. Les responsables informatiques doivent se rapprocher des constructeurs pour obtenir les mises à jour, désactiver le démarrage réseau (PXE) lorsqu'il n'est pas utilisé et surveiller les journaux.</p>
+
+    <h2>Veille du mois de Septembre</h2>
+    <h3>Des vulnérabilités critiques dans les logiciels utilisés par les établissements de santé</h3>
+    <p class="meta"><strong>Date : 2 octobre 2026</strong><br><strong>Lien :</strong> <a href="https://itsocial.fr/cybersecurite/cybersecurite-articles/des-editeurs-de-logiciels-de-sante-tardent-a-corriger-des-failles-critiques-constatent-le-cert-sante-et-le-cert-fr/" style="word-break:break-all">https://itsocial.fr/cybersecurite/cybersecurite-articles/des-editeurs-de-logiciels-de-sante-tardent-a-corriger-des-failles-critiques-constatent-le-cert-sante-et-le-cert-fr/</a></p>
+    <p>Le CERT Santé et le CERT-FR ont publié un retour d'expérience sur les vulnérabilités présentes dans certains logiciels utilisés par les établissements de santé. Le document met en évidence des problèmes de sécurité liés à des failles critiques</p>
+    <p>Selon les éléments rapportés, certaines vulnérabilités peuvent être exploitées depuis Internet avec des compétences techniques limitées. Les conséquences potentielles comprennent le vol de données, l'accès non autorisé aux systèmes informatiques et la perturbation de services essentiels.</p>
+    <p>Le rapport souligne également des difficultés dans les relations entre les établissements et les éditeurs de logiciels, notamment lorsqu'il n'existe pas de procédure pour signaler une vulnérabilité ou obtenir un correctif.</p>
+    <p>Pour les organisations, cette situation montre qu'il est nécessaire de sécuriser non seulement les infrastructures informatiques, mais aussi les logiciels métiers qui y sont installés. Les responsables informatiques doivent tenir un inventaire des applications, vérifier les mises à jour disponibles et s'assurer que les prestataires disposent de procédures de traitement des vulnérabilités.</p>
+    <p>Cette veille montre à quel point la sécurité informatique dépend aussi de la qualité des logiciels utilisés et de la capacité des éditeurs à corriger rapidement les failles découvertes.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="foot-name" href="index.html">Tom Marliot-Montagne</a>
+        <p class="foot-sub">Étudiant en BTS SIO option SISR · Campus Saint-Denis</p>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/tom-marliot-montagne-20b63934b/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="img/linkedin.png?v=28" alt="LinkedIn" width="24" height="24"></a>
+        <a href="https://github.com/Tomino07" target="_blank" rel="noopener" aria-label="GitHub"><img class="gh" src="img/github.png?v=28" alt="GitHub" width="24" height="24"></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="foot-term"><span class="u">tom marliot--montagne@portfolio</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=28"></script>
+</body>
+</html>
