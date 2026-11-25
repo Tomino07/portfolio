@@ -62,7 +62,7 @@ strong { color: var(--text); font-weight: 700; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(26, 58, 138, .96);
+  background: rgba(30, 79, 168, .96);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(11, 26, 48, .35);
@@ -220,7 +220,7 @@ button[type="submit"]:hover { background: #1d4a8a; }
 .form-status { font-size: 16px; color: var(--navy); font-weight: 600; margin-top: 14px; }
 
 .site-footer {
-  background: #1A3A8A;
+  background: #1E4FA8;
   font-size: 15px;
   color: var(--deep-text);
 }
